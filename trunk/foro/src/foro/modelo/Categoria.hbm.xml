@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-jun-2012 13:39:35 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="foro.modelo.Categoria" table="categoria" catalog="foro">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <bag name="topics" table="topic" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="categoria" not-null="true" />
+            </key>
+            <one-to-many class="foro.modelo.Topic" />
+        </bag>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-jun-2012 13:39:35 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="foro.modelo.Usuario" table="usuario" catalog="foro">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="nick" type="string">
+            <column name="nick" length="45" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="45" not-null="true" />
+        </property>
+        <set name="topics" table="topic" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario" not-null="true" />
+            </key>
+            <one-to-many class="foro.modelo.Topic" />
+        </set>
+        <set name="mensajeses" table="mensajes" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario" not-null="true" />
+            </key>
+            <one-to-many class="foro.modelo.Mensajes" />
+        </set>
+    </class>
+</hibernate-mapping>
