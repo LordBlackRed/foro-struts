@@ -1,0 +1,1 @@
+Un foro básico realizado con tecnologías J2EE y con el framework Struts 2 más hibernate
